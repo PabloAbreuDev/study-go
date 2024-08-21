@@ -4,7 +4,8 @@
 
 ### Week 1:
 
-- [ ] Installation and setup of the Go environment, variables, and basic types.
+- [x] Installation and setup of the Go environment, Getting Starter introduction at go.dev
+- [ ] variables, and basic types.
 - [ ] Operators and conditionals (if, else, switch).
 - [ ] Control structures (loops) and introduction to functions.
 
