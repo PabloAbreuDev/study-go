@@ -1,0 +1,56 @@
+# Compiled binary files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Go build artifacts
+bin/
+obj/
+*.out
+*.log
+
+# Go workspace file
+go.work
+
+# Dependency directories
+vendor/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+*.idea/
+*.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+
+# Coverage files
+*.coverage
+*.cover
+
+# Environment files
+.env
+
+# Go modules
+go.sum
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Exclude the compiled binaries directory
+build/
+
+# Ignore configuration files and directories
+*.env
+*.DS_Store
+*.vscode/
+
