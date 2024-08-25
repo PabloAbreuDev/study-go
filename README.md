@@ -1,3 +1,10 @@
+# Sumary
+[Week 1](./week-1/)
+ - [Variables and basic types](./week-1//basic-types/basic-types.go)
+ - [Operators and conditionals (if, else, switch)](./week-1//operators-and-conditionals/operators-and-conditionals.go)
+ - [Control structures (loops) and introduction to functions](./week-1/loops-and-functions/loops-and-functions.go)
+
+
 ## Weeks 1-2: Go Fundamentals
 
 **Objective:** Understand basic syntax, control structures, and data manipulation.
@@ -5,9 +12,9 @@
 ### Week 1:
 
 - [x] Installation and setup of the Go environment, Getting Starter introduction at go.dev
-- [ ] variables, and basic types.
-- [ ] Operators and conditionals (if, else, switch).
-- [ ] Control structures (loops) and introduction to functions.
+- [x] variables, and basic types.
+- [x] Operators and conditionals (if, else, switch).
+- [x] Control structures (loops) and introduction to functions.
 
 ### Week 2:
 
