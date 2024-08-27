@@ -1,9 +1,10 @@
 # Sumary
-[Week 1](./week-1/)
- - [Variables and basic types](./week-1//basic-types/basic-types.go)
- - [Operators and conditionals (if, else, switch)](./week-1//operators-and-conditionals/operators-and-conditionals.go)
- - [Control structures (loops) and introduction to functions](./week-1/loops-and-functions/loops-and-functions.go)
 
+[Week 1](./week-1/)
+
+- [Variables and basic types](./week-1//basic-types/basic-types.go)
+- [Operators and conditionals (if, else, switch)](./week-1//operators-and-conditionals/operators-and-conditionals.go)
+- [Control structures (loops) and introduction to functions](./week-1/loops-and-functions/loops-and-functions.go)
 
 ## Weeks 1-2: Go Fundamentals
 
@@ -18,7 +19,7 @@
 
 ### Week 2:
 
-- [ ] Arrays and slices.
+- [x] Arrays and slices.
 - [ ] Maps and structs.
 - [ ] String manipulation and file reading/writing.
 
@@ -70,7 +71,7 @@
 - [ ] JSON manipulation and middleware.
 - [ ] User authentication and authorization.
 - [ ] Completing a full RESTful API.
-  
+
 **Exercise:** Develop a complete API for task management with authentication.
 
 ## Weeks 9-10: Socket and WebSocket Communication
@@ -88,7 +89,7 @@
 - [ ] Integrating WebSockets into an application.
 - [ ] Handling real-time events.
 - [ ] Integrating WebSockets with the previously developed API and review.
-  
+
 **Exercise:** Create a real-time chat system for multiple users using WebSockets.
 
 ## Weeks 11-12: Testing and Final Project
@@ -115,5 +116,3 @@
 - [ ] Monthly budget creation
 - [ ] Sending alerts with push notifications
 - [ ] Customized reports
-
-
