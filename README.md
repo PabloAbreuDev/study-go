@@ -20,7 +20,8 @@
 ### Week 2:
 
 - [x] Arrays and slices.
-- [ ] Maps and structs.
+- [x] Maps 
+- [ ] Structs.
 - [ ] String manipulation and file reading/writing.
 
 **Exercise:** Create a program that reads a file and displays the formatted content.
@@ -53,59 +54,19 @@
 
 **Objective:** Manipulate databases and create robust RESTful APIs.
 
-### Week 6:
+- [ ] Finish the course [Building Web Applications with Go - Intermediate Level
+](https://www.udemy.com/share/1051Da3@GcYnyM9AO50tAF995Ttj0kwlcni7SBIWFliFaGmVTNqlIvsVgEbfVKgKGssM3ojA/)
 
-- [ ] Database connection (PostgreSQL/MySQL).
-- [ ] Basic queries (SELECT, INSERT).
-- [ ] Updating and deleting records.
-- [ ] Review and practice with exercises.
 
-### Week 7:
+## Weeks 9-10: Microservices
 
-- [ ] Transactions and error handling in the database.
-- [ ] API development with net/http.
-- [ ] Creating basic endpoints and integrating with the database.
+**Objective:** Finish a course and learn how to build a full microservice project.
 
-### Week 8:
+- [ ] Finish the course [Build highly available, scalable, resilient distributed applications using Go](https://www.udemy.com/share/106lo03@QD4oyBX4DPbd_nuZ58rAVc3_dubtzyIGL_KclGTEO5S4Q8D952QrDC0uQdoBfzMb/)
 
-- [ ] JSON manipulation and middleware.
-- [ ] User authentication and authorization.
-- [ ] Completing a full RESTful API.
 
-**Exercise:** Develop a complete API for task management with authentication.
-
-## Weeks 9-10: Socket and WebSocket Communication
-
-**Objective:** Implement real-time communication with sockets and WebSockets.
-
-### Week 9:
-
-- [ ] Introduction to the net package and creating a TCP server.
-- [ ] UDP communication and handling multiple clients.
-- [ ] Implementing WebSockets.
-
-### Week 10:
-
-- [ ] Integrating WebSockets into an application.
-- [ ] Handling real-time events.
-- [ ] Integrating WebSockets with the previously developed API and review.
-
-**Exercise:** Create a real-time chat system for multiple users using WebSockets.
-
-## Weeks 11-12: Testing and Final Project
-
-**Objective:** Learn to test, optimize, document code, and develop a complete application.
-
-### Week 11:
-
-- [ ] Introduction to unit testing (testing).
-- [ ] Implementing screens of frontend of the final project
-- [ ] Planning, structuring and implementing base of backend from the final project.
-
-### Week 12:
-
-- [ ] Implementing the backend and APIs.
-- [ ] Integrating WebSockets, final testing, and documentation.
+## Weeks 11-12: Final Project
+- [ ] Implement a full project
 
 ### Final Project
 
@@ -114,5 +75,4 @@
 - [ ] Income and expense tracking
 - [ ] Category management for expenses/income
 - [ ] Monthly budget creation
-- [ ] Sending alerts with push notifications
 - [ ] Customized reports
