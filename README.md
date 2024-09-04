@@ -22,9 +22,7 @@
 - [x] Arrays and slices.
 - [x] Maps 
 - [ ] Structs.
-- [ ] String manipulation and file reading/writing.
 
-**Exercise:** Create a program that reads a file and displays the formatted content.
 
 ## Weeks 3-5: Concurrency and Advanced Functions
 
@@ -42,30 +40,19 @@
 - [ ] Communication between goroutines with channels.
 - [ ] Concurrency patterns with select and mutexes.
 
-### Week 5:
-
-- [ ] Advanced concurrency (e.g., sync.WaitGroup and sync.Mutex).
-- [ ] Concurrent errors and best practices.
-- [ ] Review of concurrency concepts and practice with exercises.
 
 **Exercise:** Create a concurrent system that simulates a task processing queue.
 
-## Weeks 6-8: Database Access and RESTful API Development
+## Weeks 5-12: Database Access and RESTful API Development
 
 **Objective:** Manipulate databases and create robust RESTful APIs.
 
 - [ ] Finish the course [Building Web Applications with Go - Intermediate Level
 ](https://www.udemy.com/share/1051Da3@GcYnyM9AO50tAF995Ttj0kwlcni7SBIWFliFaGmVTNqlIvsVgEbfVKgKGssM3ojA/)
 
+0
 
-## Weeks 9-10: Microservices
-
-**Objective:** Finish a course and learn how to build a full microservice project.
-
-- [ ] Finish the course [Build highly available, scalable, resilient distributed applications using Go](https://www.udemy.com/share/106lo03@QD4oyBX4DPbd_nuZ58rAVc3_dubtzyIGL_KclGTEO5S4Q8D952QrDC0uQdoBfzMb/)
-
-
-## Weeks 11-12: Final Project
+## Weeks 13-14: Final Project
 - [ ] Implement a full project
 
 ### Final Project
