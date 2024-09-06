@@ -21,7 +21,7 @@
 
 - [x] Arrays and slices.
 - [x] Maps 
-- [ ] Structs.
+- [x] Structs.
 
 
 ## Weeks 3-5: Concurrency and Advanced Functions
