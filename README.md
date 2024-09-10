@@ -37,7 +37,7 @@
 
 - [x] First-class functions, closures, and recursion.
 - [x] Pointers and interfaces.
-- [ ] Review of function concepts and start exercise for this section.
+- [x] Review of function concepts and start exercise for this section.
 
 ### Week 4:
 
