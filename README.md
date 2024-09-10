@@ -12,6 +12,14 @@
 - [Maps](./week-2/maps/maps-and-structs.go)
 - [Structs](./week-2/structs/structs.go)
 
+[Week 3 - 4](./week-3-4)
+- [Exercise](./week-3-4/exercise/)
+- [Clouse](./week-3-4/week-3/clousure/clousure.go)
+- [First class functions](./week-3-4/week-3/first-class-functions/first-class-functions.go)
+- [Recursion](./week-3-4/week-3/recursion/recursion.go)
+- [Pointers](./week-3-4/week-3/pointers/pointers.go)
+- [Interfaces](./week-3-4/week-3/interfaces/interfaces.go)
+
 ## Weeks 1-2: Go Fundamentals
 
 **Objective:** Understand basic syntax, control structures, and data manipulation.
