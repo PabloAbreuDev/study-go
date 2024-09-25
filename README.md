@@ -1,4 +1,4 @@
-# Sumary
+# Summary
 
 [Week 1](./week-1/)
 
@@ -19,6 +19,8 @@
 - [Recursion](./week-3-4/week-3/recursion/recursion.go)
 - [Pointers](./week-3-4/week-3/pointers/pointers.go)
 - [Interfaces](./week-3-4/week-3/interfaces/interfaces.go)
+- [Go routines](./week-3-4/week-4/go-routines/go-routines.go)
+- [Channels](./week-3-4/week-4/channels/channels.go)
 
 ## Weeks 1-2: Go Fundamentals
 
@@ -49,8 +51,8 @@
 
 ### Week 4:
 
-- [ ] Introduction to goroutines.
-- [ ] Communication between goroutines with channels.
+- [x] Introduction to goroutines.
+- [x] Communication between goroutines with channels.
 - [ ] Concurrency patterns with select and mutexes.
 - [ ] Finish exercise for this section
 
