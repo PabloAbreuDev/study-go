@@ -53,7 +53,7 @@
 
 - [x] Introduction to goroutines.
 - [x] Communication between goroutines with channels.
-- [ ] Concurrency patterns with select and mutexes.
+- [x] Concurrency patterns with select and mutexes.
 - [ ] Finish exercise for this section
 
 **Exercise:** Create a concurrent system that simulates a task processing queue.
