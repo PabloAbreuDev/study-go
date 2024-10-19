@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"strings"
 )
 
 type templateData struct {
@@ -23,17 +24,17 @@ type templateData struct {
 
 var functions = template.FuncMap{}
 
-// go:embed templates
+//go:embed templates
 var templateFS embed.FS
 
 func (app *application) addDefaultData(td *templateData, r *http.Request) *templateData {
 	return td
 }
 
-func (app *application) renderTempate(w http.ResponseWriter, r *http.Request, page string, td *templateData, partials ...string) error {
+func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, page string, td *templateData, partials ...string) error {
 	var t *template.Template
 	var err error
-	templateToRender := fmt.Sprintf("templates/%s.tmpl", page)
+	templateToRender := fmt.Sprintf("templates/%s.page.tmpl", page)
 
 	_, templateInMap := app.templateCache[templateToRender]
 
@@ -47,6 +48,18 @@ func (app *application) renderTempate(w http.ResponseWriter, r *http.Request, pa
 		}
 	}
 
+	if td == nil {
+		td = &templateData{}
+	}
+
+	td = app.addDefaultData(td, r)
+
+	err = t.Execute(w, td)
+	if err != nil {
+		app.errorLog.Println(err)
+		return err
+	}
+
 	return nil
 }
 
@@ -57,8 +70,20 @@ func (app *application) parseTemplate(partials []string, page, templateToRender 
 	// build partials
 	if len(partials) > 0 {
 		for i, x := range partials {
-			partials[i] fmt.Sprintf("templates/%s.partial.tmpl")
+			partials[i] = fmt.Sprintf("templates/%s.partial.tmpl", x)
 		}
 	}
 
+	if len(partials) > 0 {
+		t, err = template.New(fmt.Sprintf("%s.page.tmpl", page)).Funcs(functions).ParseFS(templateFS, "templates/base.layout.tmpl", strings.Join(partials, ","), templateToRender)
+	} else {
+		t, err = template.New(fmt.Sprintf("%s.page.tmpl", page)).Funcs(functions).ParseFS(templateFS, "templates/base.layout.tmpl", templateToRender)
+	}
+	if err != nil {
+		app.errorLog.Println(err)
+		return nil, err
+	}
+
+	app.templateCache[templateToRender] = t
+	return t, nil
 }
