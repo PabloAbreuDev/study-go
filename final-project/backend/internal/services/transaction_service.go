@@ -8,3 +8,7 @@ import (
 func FetchTransactions() []models.Transaction {
 	return repositories.GetAllTransactions()
 }
+
+func PostTransactions(transaction models.Transaction) interface{} {
+	return repositories.CreateTransaction(transaction)
+}
