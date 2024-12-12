@@ -23,7 +23,39 @@ func PostTransaction(c *gin.Context) {
 		return
 	}
 
-	result := repositories.CreateTransaction(transaction)
+	result := services.PostTransactions(transaction)
 
 	c.JSON(http.StatusOK, gin.H{"result": result})
+}
+
+func GetTransactionById(c *gin.Context) {
+	transactionId := c.Param("id")
+
+	transaction, err := services.GetTransactionByID(transactionId)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": transaction})
+}
+
+func UpdateTransaction(c *gin.Context) {
+	id := c.Param("id") // Get the transaction ID from the URL parameter
+
+	var updatedData models.Transaction
+	// Bind the request body to the updatedData struct
+	if err := c.ShouldBindJSON(&updatedData); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid payload"})
+		return
+	}
+
+	// Call the repository function to update the transaction
+	err := repositories.UpdateTransaction(id, updatedData)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Transaction updated successfully"})
 }

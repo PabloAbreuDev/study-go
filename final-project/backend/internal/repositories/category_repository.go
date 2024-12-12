@@ -11,8 +11,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func GetAllTransactions() []models.Transaction {
-	collection := db.GetCollection("finances-app", "transactions")
+func GetAllCategories() []models.Category {
+	collection := db.GetCollection("finances-app", "categories")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
@@ -22,26 +22,26 @@ func GetAllTransactions() []models.Transaction {
 		return nil
 	}
 	defer cursor.Close(ctx)
-	var transactions []models.Transaction
 
+	var categories []models.Category
 	for cursor.Next(ctx) {
-		var transaction models.Transaction
-		if err = cursor.Decode(&transaction); err != nil {
+		var category models.Category
+		if err = cursor.Decode(&category); err != nil {
 			log.Fatal(err)
 			return nil
 		}
-		transactions = append(transactions, transaction)
+		categories = append(categories, category)
 	}
 
-	return transactions
+	return categories
 }
 
-func CreateTransaction(transaction models.Transaction) interface{} {
-	collection := db.GetCollection("finances-app", "transactions")
+func CreateCategory(category models.Category) interface{} {
+	collection := db.GetCollection("finances-app", "categories")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	result, err := collection.InsertOne(ctx, transaction)
+	result, err := collection.InsertOne(ctx, category)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,39 +49,38 @@ func CreateTransaction(transaction models.Transaction) interface{} {
 	return result.InsertedID
 }
 
-func GetTransactionByID(id string) (*models.Transaction, error) {
+func GetCategoryByID(id string) (*models.Category, error) {
 	objectID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return nil, err
 	}
 
-	collection := db.GetCollection("finances-app", "transactions")
+	collection := db.GetCollection("finances-app", "categories")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	var transaction models.Transaction
-	err = collection.FindOne(ctx, bson.M{"_id": objectID}).Decode(&transaction)
+	var category models.Category
+	err = collection.FindOne(ctx, bson.M{"_id": objectID}).Decode(&category)
 	if err != nil {
 		return nil, err
 	}
 
-	return &transaction, nil
+	return &category, nil
 }
 
-func UpdateTransaction(id string, updatedData models.Transaction) error {
+func UpdateCategory(id string, updatedData models.Category) error {
 	objectID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return err
 	}
 
-	collection := db.GetCollection("finances-app", "transactions")
+	collection := db.GetCollection("finances-app", "categories")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
 	update := bson.M{
 		"$set": bson.M{
-			"type":        updatedData.Type,
-			"amount":      updatedData.Amount,
+			"name":        updatedData.Name,
 			"description": updatedData.Description,
 		},
 	}

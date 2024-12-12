@@ -12,3 +12,11 @@ func FetchTransactions() []models.Transaction {
 func PostTransactions(transaction models.Transaction) interface{} {
 	return repositories.CreateTransaction(transaction)
 }
+
+func GetTransactionByID(id string) (*models.Transaction, error) {
+	return repositories.GetTransactionByID(id)
+}
+
+func UpdateTransaction(id string, updatedData models.Transaction) error {
+	return repositories.UpdateTransaction(id, updatedData)
+}

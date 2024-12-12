@@ -1,12 +1,8 @@
 package models
 
-import "time"
-
 type Transaction struct {
-	ID          string
-	Type        string
-	Amount      float64
-	Description string
-	Category    string
-	Date        time.Time
+	ID          string  `json:"id" bson:"_id,omitempty"`
+	Type        string  `json:"type"`
+	Amount      float64 `json:"amount"`
+	Description string  `json:"description"`
 }

@@ -9,8 +9,17 @@ import (
 func SetupRoutes() *gin.Engine {
 	r := gin.Default()
 
+	// Transaction routes
 	r.GET("/transactions", handlers.GetTransactions)
+	r.GET("/transactions/:id", handlers.GetTransactionById)
 	r.POST("/transactions", handlers.PostTransaction)
+	r.PUT("/transactions/:id", handlers.UpdateTransaction)
+
+	// Category route
+	r.GET("/categories", handlers.GetCategories)
+	r.POST("/categories", handlers.PostCategory)
+	r.GET("/categories/:id", handlers.GetCategoryByID)
+	r.PUT("/categories/:id", handlers.UpdateCategory)
 
 	return r
 }
