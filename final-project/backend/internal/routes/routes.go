@@ -15,11 +15,17 @@ func SetupRoutes() *gin.Engine {
 	r.POST("/transactions", handlers.PostTransaction)
 	r.PUT("/transactions/:id", handlers.UpdateTransaction)
 
-	// Category route
+	// Category routes
 	r.GET("/categories", handlers.GetCategories)
 	r.POST("/categories", handlers.PostCategory)
 	r.GET("/categories/:id", handlers.GetCategoryByID)
 	r.PUT("/categories/:id", handlers.UpdateCategory)
+
+	// Budget routes
+	r.GET("/budgets", handlers.GetBudgets)
+	r.POST("/budgets", handlers.PostBudget)
+	r.GET("/budgets/:id", handlers.GetBudgetByID)
+	r.PUT("/budgets/:id", handlers.UpdateBudget)
 
 	return r
 }
