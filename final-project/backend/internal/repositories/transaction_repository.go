@@ -110,3 +110,34 @@ func DeleteTransaction(id string) error {
 	_, err = collection.DeleteOne(ctx, bson.M{"_id": objectID})
 	return err
 }
+
+func GetTransactionsByDateRange(startDate, endDate time.Time) ([]models.Transaction, error) {
+	collection := db.GetCollection("finances-app", "transactions")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	filter := bson.M{
+		"created_at": bson.M{
+			"$gte": startDate,
+			"$lte": endDate,
+		},
+	}
+
+	cursor, err := collection.Find(ctx, filter)
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var transactions []models.Transaction
+	for cursor.Next(ctx) {
+		var transaction models.Transaction
+		if err := cursor.Decode(&transaction); err != nil {
+			log.Println("Error decoding transaction:", err)
+			continue
+		}
+		transactions = append(transactions, transaction)
+	}
+
+	return transactions, nil
+}

@@ -28,5 +28,8 @@ func SetupRoutes() *gin.Engine {
 	r.GET("/budgets/:id", handlers.GetBudgetByID)
 	r.PUT("/budgets/:id", handlers.UpdateBudget)
 
+	// Report
+	r.GET("/reports", handlers.GenerateReportHandler)
+
 	return r
 }
