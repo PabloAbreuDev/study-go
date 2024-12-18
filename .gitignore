@@ -57,3 +57,5 @@ build/
 go-stripe/.air.toml
 
 dist/
+
+todo.md
