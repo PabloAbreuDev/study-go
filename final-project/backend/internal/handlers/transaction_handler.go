@@ -23,8 +23,7 @@ func PostTransaction(c *gin.Context) {
 		return
 	}
 
-	result := services.PostTransactions(transaction)
-
+	result := services.PostTransaction(transaction)
 	c.JSON(http.StatusOK, gin.H{"result": result})
 }
 

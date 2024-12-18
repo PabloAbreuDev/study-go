@@ -22,8 +22,8 @@ func GetAllTransactions() []models.Transaction {
 		return nil
 	}
 	defer cursor.Close(ctx)
-	var transactions []models.Transaction
 
+	var transactions []models.Transaction
 	for cursor.Next(ctx) {
 		var transaction models.Transaction
 		if err = cursor.Decode(&transaction); err != nil {
@@ -40,6 +40,13 @@ func CreateTransaction(transaction models.Transaction) interface{} {
 	collection := db.GetCollection("finances-app", "transactions")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
+
+	// Validate that the CategoryID exists in the database
+	categoryCollection := db.GetCollection("finances-app", "categories")
+	count, err := categoryCollection.CountDocuments(ctx, bson.M{"_id": transaction.CategoryID})
+	if err != nil || count == 0 {
+		log.Fatalf("Category with ID %v does not exist: %v", transaction.CategoryID, err)
+	}
 
 	result, err := collection.InsertOne(ctx, transaction)
 	if err != nil {
