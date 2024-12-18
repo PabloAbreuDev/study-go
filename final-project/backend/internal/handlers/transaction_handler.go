@@ -59,3 +59,15 @@ func UpdateTransaction(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Transaction updated successfully"})
 }
+
+func DeleteTransaction(c *gin.Context) {
+	id := c.Param("id")
+
+	err := services.DeleteTransaction(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to delete transaction: " + err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Transaction deleted successfully"})
+}

@@ -14,6 +14,7 @@ func SetupRoutes() *gin.Engine {
 	r.GET("/transactions/:id", handlers.GetTransactionById)
 	r.POST("/transactions", handlers.PostTransaction)
 	r.PUT("/transactions/:id", handlers.UpdateTransaction)
+	r.DELETE("/transactions/:id", handlers.DeleteTransaction)
 
 	// Category routes
 	r.GET("/categories", handlers.GetCategories)

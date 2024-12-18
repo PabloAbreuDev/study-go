@@ -89,3 +89,17 @@ func UpdateTransaction(id string, updatedData models.Transaction) error {
 	_, err = collection.UpdateOne(ctx, bson.M{"_id": objectID}, update)
 	return err
 }
+
+func DeleteTransaction(id string) error {
+	objectID, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+
+	collection := db.GetCollection("finances-app", "transactions")
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	_, err = collection.DeleteOne(ctx, bson.M{"_id": objectID})
+	return err
+}

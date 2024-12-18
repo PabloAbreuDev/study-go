@@ -20,3 +20,7 @@ func GetTransactionByID(id string) (*models.Transaction, error) {
 func UpdateTransaction(id string, updatedData models.Transaction) error {
 	return repositories.UpdateTransaction(id, updatedData)
 }
+
+func DeleteTransaction(id string) error {
+	return repositories.DeleteTransaction(id)
+}
