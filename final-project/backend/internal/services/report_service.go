@@ -14,37 +14,41 @@ func GenerateReport(startDate, endDate time.Time) ([]models.Report, error) {
 		return nil, err
 	}
 
-	categoryCollection := repositories.GetAllCategories()
-
-	categoryMap := make(map[primitive.ObjectID]models.Category)
-	for _, category := range categoryCollection {
-		objectID, err := primitive.ObjectIDFromHex(category.ID)
-		if err != nil {
-			return nil, err
-		}
-		categoryMap[objectID] = category
+	categories := repositories.GetAllCategories()
+	if err != nil {
+		return nil, err
 	}
 
-	// Group transactions by category
-	reportMap := make(map[primitive.ObjectID]*models.Report)
-	for _, transaction := range transactions {
-		categoryName := categoryMap[transaction.CategoryID]
+	categoryMap := make(map[primitive.ObjectID]string)
 
-		// Initialize if the category isn't present in the report map
-		if _, exists := reportMap[transaction.CategoryID]; !exists {
-			reportMap[transaction.CategoryID] = &models.Report{
-				CategoryName: categoryName.Name,
+	for _, category := range categories {
+		objectID, err := primitive.ObjectIDFromHex(category.ID)
+		if err != nil {
+			continue
+		}
+		categoryMap[objectID] = category.Name
+	}
+
+	reportMap := make(map[string]*models.Report)
+	for _, transaction := range transactions {
+		categoryName, exists := categoryMap[transaction.CategoryID]
+
+		if !exists {
+			categoryName = "Unknown" // Categoria não encontrada
+		}
+
+		if _, exists := reportMap[transaction.CategoryID.String()]; !exists {
+			reportMap[transaction.CategoryID.String()] = &models.Report{
+				CategoryName: categoryName,
 				TotalAmount:  0,
 				Transactions: []models.Transaction{},
 			}
 		}
 
-		// Update the report for the category
-		reportMap[transaction.CategoryID].TotalAmount += transaction.Amount
-		reportMap[transaction.CategoryID].Transactions = append(reportMap[transaction.CategoryID].Transactions, transaction)
+		reportMap[transaction.CategoryID.String()].TotalAmount += transaction.Amount
+		reportMap[transaction.CategoryID.String()].Transactions = append(reportMap[transaction.CategoryID.String()].Transactions, transaction)
 	}
 
-	// Convert the map to a slice
 	var reports []models.Report
 	for _, report := range reportMap {
 		reports = append(reports, *report)

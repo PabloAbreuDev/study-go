@@ -117,7 +117,7 @@ func GetTransactionsByDateRange(startDate, endDate time.Time) ([]models.Transact
 	defer cancel()
 
 	filter := bson.M{
-		"created_at": bson.M{
+		"date": bson.M{
 			"$gte": startDate,
 			"$lte": endDate,
 		},

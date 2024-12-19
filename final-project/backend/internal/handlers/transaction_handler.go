@@ -24,6 +24,11 @@ func PostTransaction(c *gin.Context) {
 		return
 	}
 
+	if transaction.Date.IsZero() {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Date is required"})
+		return
+	}
+
 	result := services.PostTransaction(transaction)
 	c.JSON(http.StatusOK, gin.H{"result": result})
 }
@@ -41,16 +46,14 @@ func GetTransactionById(c *gin.Context) {
 }
 
 func UpdateTransaction(c *gin.Context) {
-	id := c.Param("id") // Get the transaction ID from the URL parameter
+	id := c.Param("id")
 
 	var updatedData models.Transaction
-	// Bind the request body to the updatedData struct
 	if err := c.ShouldBindJSON(&updatedData); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid payload"})
 		return
 	}
 
-	// Call the repository function to update the transaction
 	err := repositories.UpdateTransaction(id, updatedData)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
@@ -76,7 +79,6 @@ func GenerateReportHandler(c *gin.Context) {
 	startDateStr := c.Query("start_date")
 	endDateStr := c.Query("end_date")
 
-	// Parse start and end dates
 	startDate, err := time.Parse("2006-01-02", startDateStr)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid start_date format. Use YYYY-MM-DD."})
@@ -89,7 +91,6 @@ func GenerateReportHandler(c *gin.Context) {
 		return
 	}
 
-	// Generate the report
 	report, err := services.GenerateReport(startDate, endDate)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

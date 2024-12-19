@@ -20,7 +20,6 @@ func ConnectMongoDB(uri string) {
 		log.Fatalf("Failed to connect to MongoDB: %v", err)
 	}
 
-	// Verifica a conexão
 	err = client.Ping(ctx, nil)
 	if err != nil {
 		log.Fatalf("Failed to ping MongoDB: %v", err)
