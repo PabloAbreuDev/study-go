@@ -4,6 +4,7 @@ import (
 	"example/backend/internal/models"
 	"example/backend/internal/repositories"
 	"example/backend/internal/services"
+	"log"
 	"net/http"
 	"time"
 
@@ -26,6 +27,11 @@ func PostTransaction(c *gin.Context) {
 
 	if transaction.Date.IsZero() {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Date is required"})
+		return
+	}
+
+	if transaction.Type != "income" && transaction.Type != "expense" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Type must be 'income' or 'expense'"})
 		return
 	}
 
@@ -91,11 +97,39 @@ func GenerateReportHandler(c *gin.Context) {
 		return
 	}
 
-	report, err := services.GenerateReport(startDate, endDate)
+	report, totalBalance, err := services.GenerateReportByType(startDate, endDate)
+	log.Println(totalBalance)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"report": report})
+}
+
+func DownloadPDFReport(c *gin.Context) {
+	startDateStr := c.Query("start_date")
+	endDateStr := c.Query("end_date")
+
+	startDate, err := time.Parse("2006-01-02", startDateStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid start_date format"})
+		return
+	}
+
+	endDate, err := time.Parse("2006-01-02", endDateStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid end_date format"})
+		return
+	}
+
+	filePath := "report.pdf"
+
+	err = services.GenerateAndExportPDFReport(startDate, endDate, filePath)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to generate report"})
+		return
+	}
+
+	c.File(filePath) // Retorna o PDF gerado para o cliente
 }

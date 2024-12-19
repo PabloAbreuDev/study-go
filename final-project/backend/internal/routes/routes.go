@@ -30,6 +30,7 @@ func SetupRoutes() *gin.Engine {
 
 	// Report
 	r.GET("/reports", handlers.GenerateReportHandler)
+	r.GET("/reports/download", handlers.DownloadPDFReport)
 
 	return r
 }
