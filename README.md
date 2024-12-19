@@ -67,13 +67,16 @@
 
 ## Weeks 13-14: Final Project
 
-- [ ] Implement a full project
+- [x] Implement a full project
 
 ### Final Project
 
 **Expense Management Application:**
 
-- [ ] Income and expense tracking
-- [ ] Category management for expenses/income
-- [ ] Monthly budget creation
-- [ ] Customized reports
+- [x] Income and expense tracking
+- [x] Category management for expenses/income
+- [x] Monthly budget creation
+- [x] Customized reports
+
+![Routes](./files/routes.png)
+![Report](./files/report.png)
