@@ -62,7 +62,7 @@
 
 **Objective:** Manipulate databases and create robust RESTful APIs.
 
-- [ ] Finish the course [Building Web Applications with Go - Intermediate Level
+- [x] Finish the course [Building Web Applications with Go - Intermediate Level
       ](https://www.udemy.com/share/1051Da3@GcYnyM9AO50tAF995Ttj0kwlcni7SBIWFliFaGmVTNqlIvsVgEbfVKgKGssM3ojA/)
 
 ## Weeks 13-14: Final Project
